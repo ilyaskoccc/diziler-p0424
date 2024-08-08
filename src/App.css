@@ -1,0 +1,95 @@
+.app {
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding: 15px;
+}
+
+.list {
+  background-color: white;
+  height: 100%;
+  flex: 1;
+  border-radius: 10px;
+  overflow: auto;
+}
+
+.list-content {
+  padding-left: 20px;
+}
+
+h2 {
+  padding: 15px 20px;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.list-item img {
+  width: 35%;
+  border-radius: 8px;
+}
+
+
+/* ortadaki bölüm */
+
+.infoBox {
+  background-color: white;
+  flex: 2;
+  padding: 15px;
+  min-height: 200px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.infoBox img {
+  width: 30%;
+  border-radius: 10px;
+}
+/* ortadaki bölüm */
+
+
+/* details */
+
+.details-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+
+.details {
+  max-width: 880px;
+  min-height: 500px;
+  border-radius: 20px;
+  background-color: #fff;
+  width: 100%; 
+}
+
+.details-content {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 15px;
+}
+
+.details-content img {
+  flex: 1;
+  border-radius: 15px;
+}
+
+.details-table {
+  flex: 2;
+  font-size: 14px;
+  padding: 15px 0;
+}
+
+/* details */
