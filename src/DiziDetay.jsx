@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
-export default function DiziDetay({ addDizi }) {
+export default function DiziDetay({ addDizi, izlenecek }) {
   const [detay, setDetay] = useState(null);
   let { dizi } = useParams();
   let history = useHistory();
@@ -12,7 +12,7 @@ export default function DiziDetay({ addDizi }) {
       .get("https://www.episodate.com/api/show-details?q=" + dizi)
       .then((response) => setDetay(response.data.tvShow))
       .catch((error) => console.log(error))
-      .finally(() => console.log("işlem bi şekilde tamam"));
+      .finally(() => console.log("işlem bi şekilde tamam-1"));
   }, [dizi]);
 
   function handleBack() {
@@ -24,7 +24,7 @@ export default function DiziDetay({ addDizi }) {
     alert("eklendi!");
     setTimeout(() => {
       history.push("/");
-    }, 3000);
+    }, 2000);
   }
 
   return (
@@ -39,7 +39,11 @@ export default function DiziDetay({ addDizi }) {
             <h3>{detay.genres.join(" - ")}</h3>
             <p>{detay.description}</p>
             <div>
-              <button onClick={handleAdd}>Listeme ekle</button>
+              {izlenecek.filter((dizi) => dizi.id == detay.id).length > 0 ? (
+                "Eklenmiş"
+              ) : (
+                <button onClick={handleAdd}>Listeme ekle</button>
+              )}
               <button onClick={handleBack}>Geri Dön</button>
             </div>
           </div>

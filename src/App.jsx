@@ -33,7 +33,7 @@ function App() {
       .get("https://www.episodate.com/api/most-popular?page=1")
       .then((response) => setDiziler(response.data.tv_shows))
       .catch((error) => console.log(error))
-      .finally(() => console.log("işlem bi şekilde tamam"));
+      .finally(() => console.log("işlem bi şekilde tamam-2"));
   }, []);
 
   function addIzlenecek(tiklananDizi) {
@@ -42,7 +42,7 @@ function App() {
 
     // tıklanan dizi, izlenecekler listesinde zaten var mı?
     const filtered = izlenecek.filter(
-      (eklenen) => eklenen.id === tiklananDizi.id
+      (eklenen) => eklenen.id.toString() === tiklananDizi.id.toString()
     );
 
     if (filtered.length > 0) {
@@ -99,7 +99,7 @@ function App() {
 
                 <Link to={`/dizi-detay/${secili.permalink}`}>Detaylar</Link>
 
-                {izlenecek.filter((eklenmis) => (eklenmis.id = secili.id))
+                {izlenecek.filter((eklenmis) => eklenmis.id === secili.id)
                   .length > 0 ? (
                   "eklenmiş"
                 ) : (
@@ -134,7 +134,7 @@ function App() {
         </div>
       </Route>
       <Route path="/dizi-detay/:dizi">
-        <DiziDetay addDizi={addIzlenecek} />
+        <DiziDetay addDizi={addIzlenecek} izlenecek={izlenecek} />
       </Route>
     </Switch>
   );
