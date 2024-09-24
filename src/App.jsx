@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 
 import DiziDetay from "./DiziDetay";
+import DiziEkle from "./DiziEkle";
 
 /*
 DİZİLER
@@ -97,7 +98,11 @@ function App() {
                 </p>
                 <p>Start Date: {secili.start_date}</p>
 
-                <Link to={`/dizi-detay/${secili.permalink}`}>Detaylar</Link>
+                {secili.permalink === "yeni" ? (
+                  ""
+                ) : (
+                  <Link to={`/dizi-detay/${secili.permalink}`}>Detaylar</Link>
+                )}
 
                 {izlenecek.filter((eklenmis) => eklenmis.id === secili.id)
                   .length > 0 ? (
@@ -129,12 +134,18 @@ function App() {
                     </div>
                   ))
                 : "Dizi ekleyin"}
+              <Link to="/dizi-ekle" className="ekle">
+                Yeni Film Ekle
+              </Link>
             </div>
           </div>
         </div>
       </Route>
       <Route path="/dizi-detay/:dizi">
         <DiziDetay addDizi={addIzlenecek} izlenecek={izlenecek} />
+      </Route>
+      <Route path="/dizi-ekle">
+        <DiziEkle setDiziler={setDiziler} diziler={diziler} />
       </Route>
     </Switch>
   );
